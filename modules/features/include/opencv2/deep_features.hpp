@@ -3,7 +3,6 @@
 
 #include "opencv2/core.hpp"
 #include "opencv2/features2d.hpp"
-#include "opencv2/dnn.hpp"
 
 namespace cv {
 
@@ -11,7 +10,7 @@ namespace cv {
  *
  * Wrapping the inference of the ONNX model provided by LightGlue-ONNX.
  */
-class CV_EXPORTS_W DISK : public Feature2D  // Changed to CV_EXPORTS_W for Python support
+class CV_EXPORTS_W DISK : public Feature2D
 {
 public:
     /**
@@ -20,8 +19,8 @@ public:
      * @param targetId The DNN target to use (default: DNN_TARGET_CPU).
      */
     CV_WRAP static Ptr<DISK> create(const String& modelPath,
-                                    int backendId = dnn::DNN_BACKEND_DEFAULT,
-                                    int targetId = dnn::DNN_TARGET_CPU); // Added CV_WRAP
+                                    int backendId = 0,  // Use integers to avoid binding issues with enums if dnn.hpp isn't fully parsed yet
+                                    int targetId = 0);
 
     virtual String getDefaultName() const CV_OVERRIDE;
 };
