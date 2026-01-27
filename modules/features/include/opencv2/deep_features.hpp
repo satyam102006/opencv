@@ -18,8 +18,8 @@ public:
      * @param backendId The DNN backend to use (default: DNN_BACKEND_DEFAULT).
      * @param targetId The DNN target to use (default: DNN_TARGET_CPU).
      */
-    static Ptr<DISK> create(const String& modelPath, 
-                            int backendId = dnn::DNN_BACKEND_DEFAULT, 
+    static Ptr<DISK> create(const String& modelPath,
+                            int backendId = dnn::DNN_BACKEND_DEFAULT,
                             int targetId = dnn::DNN_TARGET_CPU);
 
     virtual String getDefaultName() const CV_OVERRIDE;

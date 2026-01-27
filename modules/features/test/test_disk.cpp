@@ -14,7 +14,7 @@ TEST(Features2d_DISK, Regression)
         modelPath = cvtest::findDataFile("dnn/disk_standalone.onnx", false);
     } catch (...) {
         std::cout << "[ SKIPPED ] DISK test: model not found (check opencv_extra)." << std::endl;
-        return; 
+        return;
     }
 
     // 2. Create the detector

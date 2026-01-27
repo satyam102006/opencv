@@ -9,8 +9,8 @@ using namespace dnn;
 class DISK_Impl : public DISK {
 public:
 
-    DISK_Impl(const String& _modelPath, int _backendId, int _targetId) 
-        : modelPath(_modelPath), backendId(_backendId), targetId(_targetId) 
+    DISK_Impl(const String& _modelPath, int _backendId, int _targetId)
+        : modelPath(_modelPath), backendId(_backendId), targetId(_targetId)
     {
         net = readNetFromONNX(modelPath);
         net.setPreferableBackend(backendId);
@@ -59,7 +59,7 @@ public:
             if (score > 0.0f) {
                 float x = kptsData[i * 2] * scaleX;
                 float y = kptsData[i * 2 + 1] * scaleY;
-                
+
                 KeyPoint kp(x, y, 1.0f, -1, score);
                 keypoints.push_back(kp);
                 validIndices.push_back(i);
@@ -69,7 +69,7 @@ public:
         // 4. Filter Descriptors
         if (_descriptors.needed()) {
             // Read dimension from the blob instead of hardcoding '128'
-            int dim = descBlob.size[2]; 
+            int dim = descBlob.size[2];
             _descriptors.create((int)validIndices.size(), dim, CV_32F);
             Mat descriptors = _descriptors.getMat();
 
